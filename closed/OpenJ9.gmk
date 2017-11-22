@@ -28,6 +28,14 @@ ifeq (,$(BUILD_ID))
   BUILD_ID := 000000
 endif
 
+# 64 bit compressedrefs builds put some of the libraries in lib/compressedrefs.
+# What's the appropriate directory for a 32 bit build? I've opted for 'default'.
+ifeq (1,$(OPENJDK_DOCKER_CC_ARM))  # condition should be more specific to 32bit
+  LIB_SUBDIR=default
+else
+  LIB_SUBDIR=compressedrefs
+endif
+
 OPENJ9_SHA    := $(shell git -C $(OPENJ9_TOPDIR)    rev-parse --short HEAD)
 OPENJ9OMR_SHA := $(shell git -C $(OPENJ9OMR_TOPDIR) rev-parse --short HEAD)
 ifeq (,$(OPENJ9_SHA))
