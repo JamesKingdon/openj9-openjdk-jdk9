@@ -1,0 +1,8 @@
+#!/bin/bash
+
+cd /root/openj9-openjdk-jdk9/ && \
+bash ./configure --openjdk-target=arm-linux-gnueabihf --with-abi-profile=armv6-vfp-hflt  --with-x=${OPENJ9_CC_DIR}/arm-linux-gnueabihf/ --with-freetype=${OPENJ9_CC_DIR}/arm-linux-gnueabihf/libc/usr/ --with-freemarker-jar=/root/freemarker.jar --with-build-jdk=/root/buildjdk && \
+make CONF=linux-arm-normal-server-release all && \
+cd build/linux-arm-normal-server-release/images && \
+zip -rq jdk.zip jdk && \
+zip -rq jre.zip jre
