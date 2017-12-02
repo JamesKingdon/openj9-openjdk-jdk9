@@ -3,8 +3,8 @@ language: cpp
 services: docker
 
 install:
-- bash ./get_source.sh -openj9-repo=https://github.com/JamesKingdon/openj9.git -openj9-branch=arm-buildspec
-  -omr-repo=https://github.com/JamesKingdon/openj9-omr.git -omr-branch=arm-build
+- bash ./get_source.sh -openj9-repo=https://github.com/JamesKingdon/openj9.git -openj9-branch=arm
+  -omr-repo=https://github.com/JamesKingdon/openj9-omr.git -omr-branch=arm
 - cd ..; wget https://github.com/AdoptOpenJDK/openjdk9-openj9-nightly/releases/download/jdk-9%2B181-20172711/OpenJDK9-OPENJ9_x64_Linux_20172711.tar.gz;
   tar xf OpenJDK9-OPENJ9_x64_Linux_20172711.tar.gz
 - cd openj9-openjdk-jdk9/openj9/buildenv/docker/jdk9/armhf_CC/; docker build -t openj9arm .
@@ -30,4 +30,4 @@ deploy:
     branch: arm
   prerelease: true
   name: Testing, pre-alpha build for armhf
-  body: This is a prototype build with known problems, intended for testing and further development. To work around the currently known problems, invoke the JVM with ```-Xjit:disableDirectToJNI -Xgcpolicy:optthruput```
+  body: This is a prototype build with known problems, intended for testing and further development. To work around the currently known problems, invoke the JVM with -Xjit:disableDirectToJNI -Xgcpolicy:optthruput
