@@ -51430,6 +51430,9 @@ $as_echo "$OPENJDK_TARGET_ABI_PROFILE" >&6; }
     elif test "x$OPENJDK_TARGET_ABI_PROFILE" = xarm-vfp-hflt; then
       ARM_FLOAT_TYPE=vfp-hflt
       ARM_ARCH_TYPE_FLAGS='-march=armv7-a -mthumb'
+    elif test "x$OPENJDK_TARGET_ABI_PROFILE" = xarmv7-vfp-hflt; then
+      ARM_FLOAT_TYPE=vfp-hflt
+      ARM_ARCH_TYPE_FLAGS='-march=armv7-a -marm'
     elif test "x$OPENJDK_TARGET_ABI_PROFILE" = xarm-sflt; then
       ARM_FLOAT_TYPE=sflt
       ARM_ARCH_TYPE_FLAGS='-march=armv5t -marm'
