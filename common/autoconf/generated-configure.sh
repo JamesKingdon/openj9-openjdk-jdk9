@@ -5198,7 +5198,7 @@ VS_SDK_PLATFORM_NAME_2013=
 #CUSTOM_AUTOCONF_INCLUDE
 
 # Do not change or remove the following line, it is needed for consistency checks:
-DATE_WHEN_GENERATED=1512647666
+DATE_WHEN_GENERATED=1513519685
 
 ###############################################################################
 #
@@ -50797,6 +50797,9 @@ $as_echo "$OPENJDK_TARGET_ABI_PROFILE" >&6; }
     elif test "x$OPENJDK_TARGET_ABI_PROFILE" = xarm-vfp-hflt; then
       ARM_FLOAT_TYPE=vfp-hflt
       ARM_ARCH_TYPE_FLAGS='-march=armv7-a -mthumb'
+    elif test "x$OPENJDK_TARGET_ABI_PROFILE" = xarmv7-vfp-hflt; then
+      ARM_FLOAT_TYPE=vfp-hflt
+      ARM_ARCH_TYPE_FLAGS='-march=armv7-a -marm'
     elif test "x$OPENJDK_TARGET_ABI_PROFILE" = xarm-sflt; then
       ARM_FLOAT_TYPE=sflt
       ARM_ARCH_TYPE_FLAGS='-march=armv5t -marm'

@@ -1,8 +1,12 @@
 #!/bin/bash
 
-export ARM_ARCH_FLAGS="-march=armv7-a -marm -mfpu=vfp -mfloat-abi=hard"
+#export ARM_ARCH_FLAGS="-march=armv7-a -marm -mfpu=vfp -mfloat-abi=hard"
+#ABI_PROFILE=armv7-vfp-hflt
+
+ABI_PROFILE=armv6-vfp-hflt
+
 cd /root/openj9-openjdk-jdk9/ && \
-bash ./configure --openjdk-target=arm-linux-gnueabihf --with-abi-profile=armv7-vfp-hflt  --with-x=${OPENJ9_CC_DIR}/arm-linux-gnueabihf/ --with-freetype=${OPENJ9_CC_DIR}/arm-linux-gnueabihf/libc/usr/ --with-freemarker-jar=/root/freemarker.jar --with-build-jdk=/root/buildjdk && \
+bash ./configure --openjdk-target=arm-linux-gnueabihf --with-abi-profile=${ABI_PROFILE}  --with-x=${OPENJ9_CC_DIR}/arm-linux-gnueabihf/ --with-freetype=${OPENJ9_CC_DIR}/arm-linux-gnueabihf/libc/usr/ --with-freemarker-jar=/root/freemarker.jar --with-build-jdk=/root/buildjdk && \
 make CONF=linux-arm-normal-server-release all && \
 cd build/linux-arm-normal-server-release/images && \
 zip -rq jdk.zip jdk && \
