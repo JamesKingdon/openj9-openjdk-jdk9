@@ -928,9 +928,6 @@ var getJibProfilesDependencies = function (input, common) {
         linux_arm: (input.profile != null && input.profile.indexOf("hflt") >= 0
                     ? "gcc-linaro-arm-linux-gnueabihf-raspbian-2012.09-20120921_linux+1.0"
                     : "arm-linaro-4.7+1.0")
-        linux_arm_docker: (input.profile != null && input.profile.indexOf("hflt") >= 0
-                    ? "gcc-linaro-arm-linux-gnueabihf-raspbian-2012.09-20120921_linux+1.0"
-                    : "arm-linaro-4.7+1.0")
     };
 
     var devkit_platform = (input.target_cpu == "x86"

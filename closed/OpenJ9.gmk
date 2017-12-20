@@ -28,14 +28,6 @@ ifeq (,$(BUILD_ID))
   BUILD_ID := 000000
 endif
 
-# 64 bit compressedrefs builds put some of the libraries in lib/compressedrefs
-# where as for 32 bit they should go in lib/default.
-ifeq (xr32,$(OPENJ9_PLATFORM_CODE))
-  LIB_SUBDIR=default
-else
-  LIB_SUBDIR=compressedrefs
-endif
-
 OPENJ9_SHA    := $(shell git -C $(OPENJ9_TOPDIR)    rev-parse --short HEAD)
 OPENJ9OMR_SHA := $(shell git -C $(OPENJ9OMR_TOPDIR) rev-parse --short HEAD)
 ifeq (,$(OPENJ9_SHA))
