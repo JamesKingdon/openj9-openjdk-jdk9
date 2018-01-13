@@ -1,9 +1,11 @@
 #!/bin/bash
 
-#export ARM_ARCH_FLAGS="-march=armv7-a -marm -mfpu=vfp -mfloat-abi=hard"
-#ABI_PROFILE=armv7-vfp-hflt
+# For ARM V7
+export ARM_ARCH_FLAGS="-march=armv7-a -marm -mfpu=vfp -mfloat-abi=hard"
+ABI_PROFILE=armv7-vfp-hflt
 
-ABI_PROFILE=armv6-vfp-hflt
+# For ARM V6
+#ABI_PROFILE=armv6-vfp-hflt
 
 cd /root/openj9-openjdk-jdk9/ && \
 bash ./configure --openjdk-target=arm-linux-gnueabihf --with-abi-profile=${ABI_PROFILE}  --with-x=${OPENJ9_CC_DIR}/arm-linux-gnueabihf/ --with-freetype=${OPENJ9_CC_DIR}/arm-linux-gnueabihf/libc/usr/ --with-freemarker-jar=/root/freemarker.jar --with-build-jdk=/root/buildjdk && \
