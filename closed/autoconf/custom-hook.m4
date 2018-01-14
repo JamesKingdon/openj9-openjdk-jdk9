@@ -155,6 +155,10 @@ AC_DEFUN([OPENJ9_PLATFORM_EXTRACT_VARS_FROM_CPU],
     arm)
       OPENJ9_CPU=arm
       ;;
+   aarch64)
+     # XXX this will probably need to be added throughout OpenJ9
+     OPENJ9_CPU=aarch64
+     ;;
     *)
       AC_MSG_ERROR([unsupported OpenJ9 cpu $1])
       ;;
@@ -193,6 +197,11 @@ AC_DEFUN_ONCE([OPENJ9_PLATFORM_SETUP],
   elif test "x$OPENJ9_CPU" = xarm; then
     OPENJ9_PLATFORM_CODE=xr32
     OPENJ9_BUILDSPEC=linux_arm_linaro
+    OPENJ9_LIBS_SUBDIR=default
+  elif test "x$OPENJ9_CPU" = xaarch64; then
+    OPENJ9_PLATFORM_CODE=xr64
+    # XXX need to add new buildspec as below
+    OPENJ9_BUILDSPEC=linux_aarch64_linaro
     OPENJ9_LIBS_SUBDIR=default
   else
     AC_MSG_ERROR([Unsupported OpenJ9 cpu ${OPENJ9_CPU}, contact support team!])
