@@ -183,7 +183,6 @@ endef
 # ----------------------
 # param 1 = The jdk/jre directory name
 # param 2 = The jdk/jre directory to add openj9 content
-ifeq (xr32,$(OPENJ9_PLATFORM_CODE))
 define generated_target_rules
 
 .PHONY : stage_openj9_$1
@@ -216,26 +215,6 @@ $(foreach file,$(OPENJ9_SHARED_CLASSES_LIBRARIES), \
 endif # cross compile
 
 endef
-else	# Not an ARM cross compile
-define generated_target_rules
-.PHONY : stage_openj9_$1
-$(foreach file,$(OPENJ9_SHARED_LIBRARIES),$(eval $(call openj9_copy_file,$2/$(OPENJ9_LIBS_OUTPUT_DIR)/$(OPENJ9_LIBS_SUBDIR)/$(file),$(OUTPUT_ROOT)/vm/$(file))))
-$(foreach file,$(OPENJ9_MISC_FILES) $(OPENJ9_PROPERTY_FILES),$(eval $(call openj9_copy_file,$2/lib/$(file),$(OUTPUT_ROOT)/vm/$(file))))
-$(foreach file,$(OPENJ9_NOTICE_FILES),$(eval $(call openj9_copy_file,$2/$(file),$(SRC_ROOT)/$(file))))
-$(foreach file,$(OPENJ9_REDIRECTOR),$(eval $(call openj9_copy_file,$2/$(OPENJ9_LIBS_OUTPUT_DIR)/j9vm/$(LIBRARY_PREFIX)jvm$(SHARED_LIBRARY_SUFFIX),$(OUTPUT_ROOT)/vm/$(file))))
-stage_openj9_shared_libraries_$1 := $(addprefix $2/$(OPENJ9_LIBS_OUTPUT_DIR)/$(OPENJ9_LIBS_SUBDIR)/,$(OPENJ9_SHARED_LIBRARIES))
-stage_openj9_misc_files_$1 := $(addprefix $2/lib/,$(OPENJ9_MISC_FILES))
-stage_openj9_notice_files_$1 := $(addprefix $2/,$(OPENJ9_NOTICE_FILES))
-stage_openj9_property_files_$1 := $(addprefix $2/lib/,$(OPENJ9_PROPERTY_FILES))
-stage_openj9_redirector_$1 := $2/$(OPENJ9_LIBS_OUTPUT_DIR)/j9vm/$(LIBRARY_PREFIX)jvm$(SHARED_LIBRARY_SUFFIX)
-stage_openj9_$1 : \
-	$$(stage_openj9_shared_libraries_$1) \
-	$$(stage_openj9_misc_files_$1) \
-	$$(stage_openj9_notice_files_$1) \
-	$$(stage_openj9_redirector_$1) \
-	$$(stage_openj9_property_files_$1)
-endef
-endif
 
 # openj9_copy_prereq
 # ------------------
