@@ -31,4 +31,4 @@ deploy:
     branch: arm-jbk
   prerelease: true
   name: Testing, pre-alpha build for armhf, with ARMV7
-  body: This is a prototype build with known problems, intended for testing and further development. To work around the currently known problems, invoke the JVM with -Xjit:disableDirectToJNI -Xgcpolicy:optthruput
+  body: This is a prototype build with known problems, intended for testing and further development. Check the OpenJ9 and OMR projects on github for issues.
